@@ -12,6 +12,12 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/config.env" });
 }
 
+//cors
+app.use(cors({  
+  origin: process.env.NODE_ENV === "PRODUCTION" ? "https://dienthoaididong.vercel.app" : "http://localhost:3000",  
+  credentials: true,  
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
