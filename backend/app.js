@@ -13,10 +13,22 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/config.env" });
 }
 
-//cors
-app.use(cors({  
-  origin: process.env.NODE_ENV === "PRODUCTION" ? "https://dienthoaididong.vercel.app" : "http://localhost:3000",  
-  credentials: true,  
+const allowedOrigins = [
+  "https://dienthoaididong.vercel.app",
+  "https://frontend-feee.vercel.app",
+  "http://localhost:3000"
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Kiểm tra nếu origin trong danh sách được phép hoặc không có origin (request từ cùng domain)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // Cho phép gửi cookie
 }));
 
 app.use(express.json());
