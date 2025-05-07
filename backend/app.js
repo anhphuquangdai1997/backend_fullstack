@@ -16,7 +16,8 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 const allowedOrigins = [
   "https://dienthoaididong.vercel.app",
   "https://frontend-feee.vercel.app",
-  "http://localhost:3000"
+  "http://localhost:3000",
+  "http://localhost:5173"
 ];
 
 app.use(cors({
