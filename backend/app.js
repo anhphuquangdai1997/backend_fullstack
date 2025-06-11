@@ -18,7 +18,7 @@ const allowedOrigins = [
   "https://frontend-feee.vercel.app",
   "http://localhost:3000",
   "http://localhost:5173",
-  "https://webbanhang-pi.vercel.app/"
+  "https://webbanhang-pi.vercel.app"
 ];
 
 app.use(cors({
